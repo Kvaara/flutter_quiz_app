@@ -5,7 +5,7 @@ import 'package:flutter_quiz_app/profile/profile.dart';
 import 'package:flutter_quiz_app/topics/topics.dart';
 
 var appRoutes = {
-  "/": (_) => const About(),
+  "/": (_) => const Home(),
   "/home": (_) => const Home(),
   "/login": (_) => const Login(),
   "/profile": (_) => const Profile(),

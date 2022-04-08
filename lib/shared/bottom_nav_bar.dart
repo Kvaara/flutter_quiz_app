@@ -8,18 +8,36 @@ class BottomNavBar extends StatelessWidget {
     return BottomNavigationBar(
       items: const [
         BottomNavigationBarItem(
-          icon: Icon(Icons.home_outlined),
-          activeIcon: Icon(Icons.home_filled),
+          icon: Icon(
+            Icons.home_outlined,
+            size: 25,
+          ),
+          activeIcon: Icon(
+            Icons.home_filled,
+            size: 25,
+          ),
           label: "Home",
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.topic_outlined),
-          activeIcon: Icon(Icons.topic),
+          icon: Icon(
+            Icons.topic_outlined,
+            size: 25,
+          ),
+          activeIcon: Icon(
+            Icons.topic,
+            size: 25,
+          ),
           label: "Topics",
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.person_pin_outlined),
-          activeIcon: Icon(Icons.person_pin),
+          icon: Icon(
+            Icons.person_pin_outlined,
+            size: 25,
+          ),
+          activeIcon: Icon(
+            Icons.person_pin,
+            size: 25,
+          ),
           label: "Profile",
         ),
       ],
