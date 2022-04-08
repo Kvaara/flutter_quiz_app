@@ -9,5 +9,5 @@ class Auth {
     return _singleton;
   }
 
-  final userStream = FirebaseAuth.instance.authStateChanges();
+  static final userStream = FirebaseAuth.instance.authStateChanges();
 }
