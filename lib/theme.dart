@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
   static ThemeData lightTheme(BuildContext context) {
     final theme = Theme.of(context);
     return ThemeData(
+      fontFamily: GoogleFonts.baloo2().fontFamily,
       bottomAppBarTheme: const BottomAppBarTheme(
         color: Colors.black87,
       ),
