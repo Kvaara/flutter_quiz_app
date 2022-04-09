@@ -10,7 +10,7 @@ class Auth {
   }
   static final userStream = FirebaseAuth.instance.authStateChanges();
 
-  Future<void> anonLogin() async {
+  static Future<void> anonLogin() async {
     try {
       await FirebaseAuth.instance.signInAnonymously();
     } on FirebaseAuthException catch (e) {}
