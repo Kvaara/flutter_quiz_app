@@ -36,12 +36,25 @@ class Login extends StatelessWidget {
                   onPressed: Auth.googleLogin,
                   color: Colors.black45,
                 ),
-                const ElevatedLoginButton(
-                  icon: FontAwesomeIcons.apple,
-                  text: 'Apple',
-                  onPressed: Auth.guestLogin,
-                  color: Colors.black45,
-                  // color: Colors.deepPurple,
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: const [
+                    ElevatedLoginButton(
+                      icon: FontAwesomeIcons.mobileScreen,
+                      text: 'Mobile number',
+                      onPressed: Auth.guestLogin,
+                      color: Colors.black45,
+                      // color: Colors.deepPurple,
+                    ),
+                    Text(
+                      "Continuing with phone number could be potentially unsafe.",
+                      style: TextStyle(
+                        fontSize: 13.6,
+                        fontStyle: FontStyle.italic,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
                 ),
                 Align(
                   child: Text(
