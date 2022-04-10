@@ -33,13 +33,13 @@ class Login extends StatelessWidget {
                 const ElevatedLoginButton(
                   icon: FontAwesomeIcons.google,
                   text: 'Google',
-                  onPressed: Auth.anonLogin,
+                  onPressed: Auth.googleLogin,
                   color: Colors.black45,
                 ),
                 const ElevatedLoginButton(
                   icon: FontAwesomeIcons.apple,
                   text: 'Apple',
-                  onPressed: Auth.anonLogin,
+                  onPressed: Auth.guestLogin,
                   color: Colors.black45,
                   // color: Colors.deepPurple,
                 ),
@@ -53,7 +53,7 @@ class Login extends StatelessWidget {
                 const OutlinedLoginButton(
                   icon: FontAwesomeIcons.personCircleQuestion,
                   text: 'Continue as a Guest',
-                  onPressed: Auth.anonLogin,
+                  onPressed: Auth.guestLogin,
                   isRounded: false,
                 ),
               ],
