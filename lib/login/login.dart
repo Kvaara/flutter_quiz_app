@@ -13,18 +13,51 @@ class Login extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: const [
-            FlutterLogo(
-              size: 150,
+          children: [
+            const FlutterLogo(
+              size: 100,
             ),
-            Flexible(
-              child: LoginButton(
-                icon: Icons.login,
-                text: 'Continue as Guest',
-                loginMethod: Auth.anonLogin,
-                color: Colors.deepPurple,
-              ),
-            )
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: const [
+                Align(
+                  child: Text(
+                    "Or continue with:",
+                    style: TextStyle(
+                      fontSize: 24,
+                    ),
+                  ),
+                  alignment: Alignment.centerLeft,
+                ),
+                LoginButton(
+                  icon: Icons.login,
+                  text: 'Google',
+                  onPressed: Auth.anonLogin,
+                  color: Colors.deepPurple,
+                ),
+                LoginButton(
+                  icon: Icons.apple,
+                  text: 'Apple',
+                  onPressed: Auth.anonLogin,
+                  color: Colors.deepPurple,
+                ),
+                Align(
+                  child: Text(
+                    "Just exploring?",
+                    style: TextStyle(
+                      fontSize: 24,
+                    ),
+                  ),
+                  alignment: Alignment.centerLeft,
+                ),
+                LoginButton(
+                  icon: Icons.question_mark,
+                  text: 'Continue as a Guest',
+                  onPressed: Auth.anonLogin,
+                  color: Colors.deepPurple,
+                ),
+              ],
+            ),
           ],
         ),
       ),
@@ -36,14 +69,14 @@ class LoginButton extends StatelessWidget {
   final Color color;
   final IconData icon;
   final String text;
-  final Function loginMethod;
+  final Function onPressed;
 
   const LoginButton(
       {Key? key,
       required this.text,
       required this.icon,
       required this.color,
-      required this.loginMethod})
+      required this.onPressed})
       : super(key: key);
 
   @override
@@ -54,13 +87,13 @@ class LoginButton extends StatelessWidget {
         icon: Icon(
           icon,
           color: Colors.white,
-          size: 20,
+          size: 25,
         ),
         style: TextButton.styleFrom(
-          padding: const EdgeInsets.all(24),
+          padding: const EdgeInsets.all(18),
           backgroundColor: color,
         ),
-        onPressed: () => loginMethod(),
+        onPressed: () => onPressed(),
         label: Text(text, textAlign: TextAlign.center),
       ),
     );

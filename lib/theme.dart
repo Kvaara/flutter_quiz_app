@@ -14,7 +14,8 @@ class AppTheme {
         bodyText1: TextStyle(fontSize: 18),
         bodyText2: TextStyle(fontSize: 16),
         button: TextStyle(
-          letterSpacing: 1.5,
+          fontSize: 18,
+          letterSpacing: 1,
           fontWeight: FontWeight.bold,
         ),
         headline1: TextStyle(

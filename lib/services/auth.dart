@@ -13,10 +13,10 @@ class Auth {
   static Future<void> anonLogin() async {
     try {
       await FirebaseAuth.instance.signInAnonymously();
-    } on FirebaseAuthException catch (e) {}
+    } catch (e) {}
   }
 
-  Future<void> signOut() async {
+  static Future<void> signOut() async {
     await FirebaseAuth.instance.signOut();
   }
 }
