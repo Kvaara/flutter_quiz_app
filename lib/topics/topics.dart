@@ -19,7 +19,7 @@ class SignOutButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () => Auth.signOut(),
+      onPressed: () async => await Auth.signOut(),
       child: const Text("Sign Out"),
     );
   }

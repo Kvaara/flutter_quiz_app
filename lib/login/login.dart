@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../services/auth.dart';
 
@@ -7,6 +8,8 @@ class Login extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Scaffold(
       body: Container(
         padding: const EdgeInsets.all(30),
@@ -19,42 +22,39 @@ class Login extends StatelessWidget {
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: const [
+              children: [
                 Align(
                   child: Text(
                     "Or continue with:",
-                    style: TextStyle(
-                      fontSize: 24,
-                    ),
+                    style: theme.textTheme.headline1,
                   ),
                   alignment: Alignment.centerLeft,
                 ),
-                LoginButton(
-                  icon: Icons.login,
+                const ElevatedLoginButton(
+                  icon: FontAwesomeIcons.google,
                   text: 'Google',
                   onPressed: Auth.anonLogin,
-                  color: Colors.deepPurple,
+                  color: Colors.black45,
                 ),
-                LoginButton(
-                  icon: Icons.apple,
+                const ElevatedLoginButton(
+                  icon: FontAwesomeIcons.apple,
                   text: 'Apple',
                   onPressed: Auth.anonLogin,
-                  color: Colors.deepPurple,
+                  color: Colors.black45,
+                  // color: Colors.deepPurple,
                 ),
                 Align(
                   child: Text(
                     "Just exploring?",
-                    style: TextStyle(
-                      fontSize: 24,
-                    ),
+                    style: theme.textTheme.headline1,
                   ),
                   alignment: Alignment.centerLeft,
                 ),
-                LoginButton(
-                  icon: Icons.question_mark,
+                const OutlinedLoginButton(
+                  icon: FontAwesomeIcons.personCircleQuestion,
                   text: 'Continue as a Guest',
                   onPressed: Auth.anonLogin,
-                  color: Colors.deepPurple,
+                  isRounded: false,
                 ),
               ],
             ),
@@ -65,19 +65,25 @@ class Login extends StatelessWidget {
   }
 }
 
-class LoginButton extends StatelessWidget {
+class ElevatedLoginButton extends StatelessWidget {
   final Color color;
   final IconData icon;
   final String text;
   final Function onPressed;
+  final bool isRounded;
 
-  const LoginButton(
-      {Key? key,
-      required this.text,
-      required this.icon,
-      required this.color,
-      required this.onPressed})
-      : super(key: key);
+  const ElevatedLoginButton({
+    Key? key,
+    required this.text,
+    required this.icon,
+    required this.color,
+    required this.onPressed,
+    this.isRounded = true,
+  }) : super(key: key);
+
+  get isBackgroundWhite {
+    return color == Colors.white;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -86,15 +92,72 @@ class LoginButton extends StatelessWidget {
       child: ElevatedButton.icon(
         icon: Icon(
           icon,
-          color: Colors.white,
+          color: isBackgroundWhite ? Colors.black87 : Colors.white,
           size: 25,
         ),
         style: TextButton.styleFrom(
           padding: const EdgeInsets.all(18),
           backgroundColor: color,
+          shape: isRounded
+              ? RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(999),
+                )
+              : RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
         ),
         onPressed: () => onPressed(),
-        label: Text(text, textAlign: TextAlign.center),
+        label: Text(
+          text,
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: isBackgroundWhite ? Colors.black87 : Colors.white,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class OutlinedLoginButton extends StatelessWidget {
+  final IconData icon;
+  final String text;
+  final Function onPressed;
+  final bool isRounded;
+
+  const OutlinedLoginButton({
+    Key? key,
+    required this.text,
+    required this.icon,
+    required this.onPressed,
+    this.isRounded = true,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.only(bottom: 10),
+      child: OutlinedButton.icon(
+        icon: Icon(
+          icon,
+          color: Colors.white,
+          size: 25,
+        ),
+        style: TextButton.styleFrom(
+          padding: const EdgeInsets.all(18),
+          shape: isRounded
+              ? RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(999),
+                )
+              : RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+        ),
+        onPressed: () => onPressed(),
+        label: Text(
+          text,
+          textAlign: TextAlign.center,
+        ),
       ),
     );
   }
