@@ -39,4 +39,21 @@ class Firestore {
       return Stream.fromIterable([Report()]);
     });
   }
+
+  Future<void> updateUserReport(Quiz quiz) async {
+    final user = await Auth.userStream.first;
+    if (user != null) {
+      final ref = _firestoreDB.collection("reports");
+      final userReport = ref.doc(user.uid);
+
+      final data = {
+        "totals": FieldValue.increment(1),
+        "topics": {
+          quiz.topic: FieldValue.arrayUnion([quiz.id])
+        }
+      };
+
+      return userReport.set(data, SetOptions(merge: true));
+    }
+  }
 }
