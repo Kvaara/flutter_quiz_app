@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter_quiz_app/models/question.dart';
 
 class Quiz {
@@ -7,5 +5,13 @@ class Quiz {
   final String description;
   final String title;
   final String topic;
-  final Array<Question> questions;
+  final List<Question> questions;
+
+  Quiz({
+    this.id = "",
+    this.description = "",
+    this.title = "",
+    this.topic = "",
+    this.questions = const [],
+  });
 }
