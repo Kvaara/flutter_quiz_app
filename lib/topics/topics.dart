@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_quiz_app/services/auth.dart';
 import 'package:flutter_quiz_app/shared/loading_indicator.dart';
+import 'package:flutter_quiz_app/topics/topics_item.dart';
 
 import '../models/topic.dart';
 import '../services/firestore.dart';
@@ -33,7 +34,7 @@ class Topics extends StatelessWidget {
               padding: const EdgeInsets.all(20.0),
               crossAxisSpacing: 10.0,
               crossAxisCount: 2,
-              children: topics.map((topic) => Text(topic.title)).toList(),
+              children: topics.map((topic) => TopicItem(topic: topic)).toList(),
             ),
             bottomNavigationBar: const BottomNavBar(),
           );
