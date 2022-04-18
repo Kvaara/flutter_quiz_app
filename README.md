@@ -1,6 +1,8 @@
 # flutter_quiz_app
 
-A new Flutter project.
+A quiz mobile app made with Flutter that's inspired by quiz related applications like Duolingo and QuizUp.
+
+The quizzes are pretty basic and nothing that advanced.
 
 ## Getting Started
 
