@@ -40,6 +40,7 @@ dependencies:
   build_runner: ^2.1.8
   cloud_firestore: ^3.1.12
   rxdart: ^0.27.3
+  provider: ^6.0.2
 
 dev_dependencies:
   flutter_test:

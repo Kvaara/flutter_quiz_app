@@ -1,7 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_quiz_app/routes.dart';
+import 'package:flutter_quiz_app/models/report.dart';
+import 'package:flutter_quiz_app/services/firestore.dart';
 import 'package:flutter_quiz_app/theme.dart';
+import 'package:provider/provider.dart';
 
 import 'home/home.dart';
 
@@ -17,11 +19,16 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: AppTheme.lightTheme(context),
-      // routes: appRoutes,
-      home: const Home(),
+    // Provider package has the StreamProvider, which we can use to make a Stream globally usable inside every widget.
+    return StreamProvider(
+      create: (_) => Firestore().streamReport(),
+      initialData: Report(),
+      child: MaterialApp(
+        title: 'Quizler',
+        theme: AppTheme.lightTheme(context),
+        // routes: appRoutes,
+        home: const Home(),
+      ),
     );
   }
 }
