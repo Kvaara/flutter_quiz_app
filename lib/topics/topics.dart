@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_quiz_app/services/auth.dart';
 import 'package:flutter_quiz_app/shared/loading_indicator.dart';
+import 'package:flutter_quiz_app/topics/topics_drawer.dart';
 import 'package:flutter_quiz_app/topics/topics_item.dart';
 
 import '../models/topic.dart';
@@ -29,6 +30,7 @@ class Topics extends StatelessWidget {
               backgroundColor: Colors.deepPurple,
               title: const Text('Topics'),
             ),
+            drawer: TopicsDrawer(topics: topics),
             body: GridView.count(
               primary: false,
               padding: const EdgeInsets.all(20.0),
