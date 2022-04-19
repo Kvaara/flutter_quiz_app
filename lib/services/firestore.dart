@@ -41,7 +41,7 @@ class Firestore {
   }
 
   Future<void> updateUserReport(Quiz quiz) async {
-    final user = await Auth.userStream.first;
+    final user = Auth.user;
     if (user != null) {
       final ref = _firestoreDB.collection("reports");
       final userReport = ref.doc(user.uid);

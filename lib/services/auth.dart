@@ -3,13 +3,14 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 class Auth {
   static final Auth _singleton = Auth._privateConstr();
+  static final userStream = FirebaseAuth.instance.authStateChanges();
+  static final user = FirebaseAuth.instance.currentUser;
 
   Auth._privateConstr();
 
   factory Auth() {
     return _singleton;
   }
-  static final userStream = FirebaseAuth.instance.authStateChanges();
 
   static Future<void> guestLogin() async {
     try {
