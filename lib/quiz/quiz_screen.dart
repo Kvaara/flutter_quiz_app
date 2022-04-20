@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_quiz_app/models/quiz.dart';
 import 'package:flutter_quiz_app/quiz/quiz_state.dart';
 import 'package:flutter_quiz_app/shared/loading_indicator.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -7,9 +8,9 @@ import 'package:provider/provider.dart';
 import '../services/firestore.dart';
 import '../shared/progress_bar.dart';
 
-class Quiz extends StatelessWidget {
+class QuizScreen extends StatelessWidget {
   final String quizId;
-  const Quiz({
+  const QuizScreen({
     Key? key,
     required this.quizId,
   }) : super(key: key);
@@ -19,7 +20,7 @@ class Quiz extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (_) => QuizState(),
       child: FutureBuilder<Quiz>(
-        future: Firestore.fetchQuiz(quizId),
+        future: Firestore().fetchQuiz(quizId),
         builder: (context, snapshot) {
           var state = Provider.of<QuizState>(context);
 

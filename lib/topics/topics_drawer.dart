@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 
 import '../models/report.dart';
 import '../models/topic.dart';
+import '../quiz/quiz_screen.dart';
 
 class TopicsDrawer extends StatelessWidget {
   final List<Topic> topics;
