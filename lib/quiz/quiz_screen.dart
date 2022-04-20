@@ -172,7 +172,7 @@ class QuestionPage extends StatelessWidget {
                       children: [
                         Icon(
                             state.selected == opt
-                                ? FontAwesomeIcons.circleCheck
+                                ? FontAwesomeIcons.check
                                 : FontAwesomeIcons.circle,
                             size: 30),
                         Expanded(
@@ -195,4 +195,49 @@ class QuestionPage extends StatelessWidget {
       ],
     );
   }
+}
+
+/// Bottom sheet shown when Question is answered
+_bottomSheet(BuildContext context, Option opt, QuizState state) {
+  bool correct = opt.correct;
+
+  showModalBottomSheet(
+    context: context,
+    builder: (BuildContext context) {
+      return Container(
+        height: 250,
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Text(
+                correct ? "Well done!" : "Unfortunately, that is not correct."),
+            Text(
+              opt.detail,
+              style: const TextStyle(fontSize: 18, color: Colors.white54),
+            ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                  primary: correct ? Colors.green : Colors.red),
+              child: Text(
+                correct ? "Let's continue!" : "Try Again",
+                style: const TextStyle(
+                  color: Colors.white,
+                  letterSpacing: 1.5,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              onPressed: () {
+                if (correct) {
+                  state.nextPage();
+                }
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
+      );
+    },
+  );
 }

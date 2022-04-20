@@ -35,7 +35,7 @@ class Firestore {
             .map((reportJSON) => Report.fromJson(reportJSON.data() ?? {}));
       }
       print(
-          "User is not logged in... Report Stream consists of only mockup Reports");
+          "User is not logged in... Report Stream consists of only mockup Reports.");
       return Stream.fromIterable([Report()]);
     });
   }
